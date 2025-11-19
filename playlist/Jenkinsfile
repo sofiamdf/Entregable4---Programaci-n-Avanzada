@@ -2,31 +2,41 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                echo 'Descargando código desde GitHub...'
+                echo "Descargando código desde GitHub..."
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Construyendo proyecto...'
-                bat 'mvnw.cmd clean package -DskipTests'
+                echo "Construyendo proyecto..."
+                bat '''
+                    cd playlist
+                    mvnw.cmd clean package -DskipTests
+                '''
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Ejecutando tests...'
-                bat 'mvnw.cmd test'
+                echo "Ejecutando tests..."
+                bat '''
+                    cd playlist
+                    mvnw.cmd test
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy de prueba...'
-                // Después agregamos deploy-win.bat
+                echo "Simulación de deploy..."
+                bat '''
+                    cd playlist
+                    echo "Deploy exitoso"
+                '''
             }
         }
     }
