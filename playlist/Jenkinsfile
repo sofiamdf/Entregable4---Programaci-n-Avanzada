@@ -30,15 +30,14 @@ pipeline {
             }
         }
 
+        
         stage('Deploy') {
             steps {
-                echo "Ejecutando deploy..."
-                bat '''
-                    cd playlist\\scripts
-                deploy-windows.bat
-                '''
+                echo 'Ejecutando deploy en Windows...'
+                bat 'scripts\\deploy_windows.bat'
             }
         }
+
 
     }
 }
