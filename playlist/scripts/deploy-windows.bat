@@ -7,7 +7,8 @@ if not exist C:\deploy (
 )
 
 REM Ruta al jar en target
-set JAR_SOURCE=..\target\playlist-0.0.1-SNAPSHOT.jar
+set JAR_SOURCE=target\playlist-0.0.1-SNAPSHOT.jar
+
 set JAR_DEST=C:\deploy\playlist.jar
 
 REM Verificar que el jar existe
