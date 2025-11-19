@@ -32,12 +32,13 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Simulación de deploy..."
+                echo "Ejecutando deploy..."
                 bat '''
-                    cd playlist
-                    echo "Deploy exitoso"
+                    cd playlist\\scripts
+                deploy-windows.bat
                 '''
             }
         }
+
     }
 }
