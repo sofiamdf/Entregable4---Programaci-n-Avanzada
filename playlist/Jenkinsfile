@@ -13,31 +13,61 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Construyendo proyecto..."
-                bat '''
-                    cd playlist
-                    mvnw.cmd clean package -DskipTests
-                '''
+                script {
+                    if (isUnix()) {
+                        sh '''
+                            cd playlist
+                            ./mvnw clean package -DskipTests
+                        '''
+                    } else {
+                        bat '''
+                            cd playlist
+                            mvnw.cmd clean package -DskipTests
+                        '''
+                    }
+                }
             }
         }
 
         stage('Test') {
             steps {
                 echo "Ejecutando tests..."
-                bat '''
-                    cd playlist
-                    mvnw.cmd test
-                '''
+                script {
+                    if (isUnix()) {
+                        sh '''
+                            cd playlist
+                            ./mvnw test
+                        '''
+                    } else {
+                        bat '''
+                            cd playlist
+                            mvnw.cmd test
+                        '''
+                    }
+                }
             }
         }
 
-        
         stage('Deploy') {
             steps {
-                echo 'Ejecutando deploy en Windows...'
-                bat 'cd playlist && .\\scripts\\deploy-windows.bat'
+                script {
+                    if (isUnix()) {
+                        echo 'Ejecutando deploy en Mac...'
+                        sh '''
+                            cd playlist
+                            chmod +x scripts/deploy-mac.sh
+                            ./scripts/deploy-mac.sh
+                        '''
+                    } else {
+                        echo 'Ejecutando deploy en Windows...'
+                        bat '''
+                            cd playlist
+                            .\\scripts\\deploy-windows.bat
+                        '''
+                    }
+                }
             }
         }
-
-
     }
 }
+
