@@ -1,0 +1,145 @@
+/* Simple modern stylesheet (no Tailwind) */
+:root{
+  --bg: #f7f9fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --border: #e6eef6;
+  --primary: #0d6efd; /* blue */
+  --primary-contrast: #ffffff;
+  --danger: #e02424;
+  --yellow: #f6c142;
+  --radius: 12px;
+  --shadow: 0 6px 18px rgba(18, 38, 63, 0.08);
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#0f1724; margin:0;}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+
+/* Top bar */
+.topbar{background:linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6));border-bottom:1px solid var(--border)}
+.topbar .container{display:flex;flex-direction:column;padding-top:28px;padding-bottom:28px}
+.topbar h1{font-size:28px;margin:0}
+.topbar .subtitle{color:var(--muted);margin-top:6px}
+/* header row for title + actions */
+.header-row{display:flex;justify-content:space-between;align-items:center}
+.header-actions{display:flex;align-items:center;gap:12px}
+.theme-btn{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.theme-icon svg{display:block}
+/* place theme toggle inside header, vertically centered with title */
+.topbar .container{position:relative}
+/* keep theme toggle fixed at top-right so it stays visible while scrolling; positioned slightly lower to align with header */
+.theme-btn{position:fixed;right:18px;top:36px;z-index:9999}
+@media(max-width:480px){.theme-btn{right:10px;padding:6px;top:28px}}
+
+.btn-move{background:transparent;border:1px solid var(--border);padding:6px 8px;border-radius:6px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.btn-move svg{display:block}
+
+/* interactive hover/active effects for buttons */
+.btn, .icon, .theme-btn { transition: transform .12s ease, box-shadow .12s ease, color .12s ease, background-color .12s ease; }
+.btn:hover, .icon:hover, .theme-btn:hover { transform: translateY(-3px) scale(1.02); }
+.btn:active, .icon:active, .theme-btn:active { transform: translateY(-1px) scale(0.99); }
+
+.btn-primary{transition:transform .12s ease, box-shadow .12s ease}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(13,110,253,0.12)}
+.btn-move[disabled]{opacity:0.45;cursor:not-allowed}
+
+.layout{display:grid;grid-template-columns:1fr;gap:24px;padding-top:18px;padding-bottom:48px}
+
+/* Add card */
+.add-card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border)}
+.add-card h2{margin:0 0 12px 0}
+.form label{display:block;margin-bottom:16px;color:#0f1724;font-weight:600}
+.form label input{margin-top:10px}
+.form input[type="text"]{width:100%;padding:14px;border-radius:8px;border:1px solid #d9e9fb;background:#fbfdff}
+.form .form-actions{margin-top:18px;text-align:center}
+.btn{display:inline-block;padding:12px 18px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+.btn-primary{background:var(--primary);color:var(--primary-contrast)}
+
+/* Playlist list */
+.playlist{margin-bottom:4px}
+.playlist h2{margin:0 0 12px 0}
+.playlist-list{display:flex;flex-direction:column;gap:12px}
+.video-card{display:flex;justify-content:space-between;align-items:center;background:var(--card);padding:14px;border-radius:10px;border:1px solid var(--border);box-shadow:0 4px 12px rgba(15,23,36,0.04);cursor:pointer;transition:transform .12s ease, box-shadow .12s ease}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(15,23,36,0.08)}
+.video-card.selected{outline:3px solid rgba(13,110,253,0.12)}
+.video-info{flex:1}
+.video-title{font-weight:700;margin-bottom:6px}
+.video-url{color:var(--muted);font-size:13px}
+.video-actions{display:flex;gap:10px;align-items:center;margin-left:12px}
+.icon{background:transparent;border:none;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:16px}
+.btn-like{color:var(--danger);font-size:16px}
+.btn-fav{color:#9aa0a6;font-size:16px;transition:color .12s ease, transform .08s ease;}
+.btn-fav.active{color:var(--yellow);transform:scale(1.06);text-shadow:0 1px 0 rgba(0,0,0,0.06)}
+.btn-delete{color:#e11d48;font-size:16px}
+.count{font-weight:600;margin-left:6px}
+
+/* Player */
+.player-card{background:var(--card);padding:16px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.player-title{font-weight:700;margin-bottom:12px}
+.player-frame{background:#000;border-radius:8px;overflow:hidden}
+.player-frame iframe{width:100%;height:480px;border:0;display:block}
+
+/* Responsive */
+@media(min-width:900px){
+  .layout{grid-template-columns:420px 1fr}
+  .player{grid-column:1/3}
+  .add-card{grid-column:1/2}
+}
+
+@media(max-width:899px){
+  .player-frame iframe{height:300px}
+}
+
+/* Dark mode overrides */
+.dark-mode{
+  --bg: #0b1220;
+  --card: #0f1724;
+  --muted: #9aa3b2;
+  --border: rgba(255,255,255,0.06);
+  --primary: #3b82f6;
+  --primary-contrast: #ffffff;
+  --danger: #ff6b6b;
+  --yellow: #f6c142;
+  color-scheme: dark;
+}
+
+.dark-mode body, .dark-mode{
+  background: #071026;
+}
+
+.dark-mode body { background: var(--bg); }
+.dark-mode .topbar{ background: rgba(255,255,255,0.02); border-bottom-color: rgba(255,255,255,0.06)}
+.dark-mode .add-card, .dark-mode .video-card, .dark-mode .player-card{ background:var(--card); border-color:var(--border); color:#e6eef6 }
+.dark-mode .video-url{ color:var(--muted) }
+.dark-mode .form input[type="text"]{ background:#0b1622; border:1px solid rgba(255,255,255,0.04); color:#e6eef6 }
+.dark-mode .btn-primary{ background:var(--primary); color:var(--primary-contrast) }
+.dark-mode .theme-btn{ border-color: rgba(255,255,255,0.08); color:#e6eef6 }
+.dark-mode .icon{ color:inherit }
+
+.dark-mode .topbar .subtitle{ color: #c7d2dd }
+.dark-mode .playlist h2,
+.dark-mode .player h2,
+.dark-mode .add-card h2,
+.dark-mode .form label,
+.dark-mode .video-title,
+.dark-mode .player-title,
+.dark-mode .video-url{
+  color: #e6eef6;
+}
+
+/* ensure header title visible in dark mode even if inline styles missed */
+.dark-mode #site-title{ color: #ffffff !important }
+
+/* Ensure action icons are visible in dark mode */
+.dark-mode .btn-like{ color:#ff8080 }
+.dark-mode .btn-fav{ color:#b3b9bf }
+.dark-mode .btn-fav.active{ color:var(--yellow); filter: drop-shadow(0 1px 0 rgba(0,0,0,0.2)); }
+.dark-mode .btn-delete{ color:#ff8a8a }
+.dark-mode .count{ color:#e6eef6 }
+.dark-mode .btn-move{ color:#e6eef6; border-color: rgba(255,255,255,0.06) }
+
+
+.dark-mode #site-title{ color: #ffffff }
+
+
