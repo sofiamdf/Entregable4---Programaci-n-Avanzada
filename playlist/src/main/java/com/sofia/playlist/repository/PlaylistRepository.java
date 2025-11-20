@@ -28,6 +28,14 @@ public class PlaylistRepository {
         load();
     }
 
+    /**
+     * Constructor for tests - allows injecting a custom storage file.
+     */
+    public PlaylistRepository(File storageFile) {
+        this.file = storageFile;
+        load();
+    }
+
     private synchronized void load() {
         if (!file.exists()) {
             return;
