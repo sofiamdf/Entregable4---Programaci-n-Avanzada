@@ -110,9 +110,17 @@ public class PlaylistService {
             }
         }
 
-        if (id == null || id.isEmpty()) {
-            return original;
-        }
+            if (id == null || id.isEmpty()) {
+                return original;
+            }
+
+            // Minimal validation: ensure extracted id looks like a YouTube id
+            // (at least 6 chars and only URL-safe characters). If it doesn't
+            // look valid, return the original URL to avoid storing/using an
+            // invalid embed (which can cause requests like "/e" and 404s).
+            if (id.length() < 6 || !id.matches("^[A-Za-z0-9_-]+$")) {
+                return original;
+            }
 
         return "https://www.youtube.com/embed/" + id;
 

@@ -92,7 +92,7 @@ public class PlaylistRepositoryTest {
         Video added = repository.add(v);
 
         // create new repository instance which should read the file
-        PlaylistRepository repo2 = new PlaylistRepository();
+        PlaylistRepository repo2 = new PlaylistRepository(tempFile);
         List<Video> all = repo2.findAll();
         assertTrue(all.stream().anyMatch(x -> x.getName().equals("Persist")));
     }

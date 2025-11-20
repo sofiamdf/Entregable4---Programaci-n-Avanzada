@@ -1,29 +1,22 @@
 [ {
   "id" : 1,
-  "name" : "L",
-  "url" : "u",
-  "embedUrl" : "e",
-  "likes" : 1,
-  "favorite" : false
-}, {
-  "id" : 2,
-  "name" : "Persist",
-  "url" : "u",
-  "embedUrl" : "e",
-  "likes" : 0,
+  "name" : " Bruno Mars - Locked Out Of Heaven (Official Music Video)",
+  "url" : "https://www.youtube.com/watch?v=e-fA-gBCkj0&list=RDe-fA-gBCkj0&start_radio=1",
+  "embedUrl" : "https://www.youtube.com/embed/e-fA-gBCkj0",
+  "likes" : 8,
   "favorite" : true
 }, {
-  "id" : 3,
-  "name" : "One",
-  "url" : "u1",
-  "embedUrl" : "e1",
-  "likes" : 0,
+  "id" : 2,
+  "name" : "Harry Styles - As It Was (Official Video)",
+  "url" : "https://www.youtube.com/watch?v=H5v3kku4y6Q&list=RDe-fA-gBCkj0&index=22",
+  "embedUrl" : "https://www.youtube.com/embed/H5v3kku4y6Q",
+  "likes" : 4,
   "favorite" : false
 }, {
   "id" : 4,
-  "name" : "Two",
-  "url" : "u2",
-  "embedUrl" : "e2",
+  "name" : "Arctic Monkeys - Do I Wanna Know? (Live)",
+  "url" : "https://www.youtube.com/watch?v=1tWFk8ojF4M",
+  "embedUrl" : "https://www.youtube.com/embed/1tWFk8ojF4M",
   "likes" : 0,
   "favorite" : false
 } ]

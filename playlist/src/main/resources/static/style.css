@@ -68,7 +68,8 @@ body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica
 .video-url{color:var(--muted);font-size:13px}
 .video-actions{display:flex;gap:10px;align-items:center;margin-left:12px}
 .icon{background:transparent;border:none;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:16px}
-.btn-like{color:var(--danger);font-size:16px}
+.btn-like{color:#9aa0a6;font-size:16px}
+.btn-like.has-likes{color:var(--danger)}
 .btn-fav{color:#9aa0a6;font-size:16px;transition:color .12s ease, transform .08s ease;}
 .btn-fav.active{color:var(--yellow);transform:scale(1.06);text-shadow:0 1px 0 rgba(0,0,0,0.06)}
 .btn-delete{color:#e11d48;font-size:16px}
@@ -133,6 +134,7 @@ body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica
 
 /* Ensure action icons are visible in dark mode */
 .dark-mode .btn-like{ color:#ff8080 }
+.dark-mode .btn-like.has-likes{ color:#ff8080 }
 .dark-mode .btn-fav{ color:#b3b9bf }
 .dark-mode .btn-fav.active{ color:var(--yellow); filter: drop-shadow(0 1px 0 rgba(0,0,0,0.2)); }
 .dark-mode .btn-delete{ color:#ff8a8a }
