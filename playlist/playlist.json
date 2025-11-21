@@ -3,13 +3,20 @@
   "name" : " Bruno Mars - Locked Out Of Heaven (Official Music Video)",
   "url" : "https://www.youtube.com/watch?v=e-fA-gBCkj0&list=RDe-fA-gBCkj0&start_radio=1",
   "embedUrl" : "https://www.youtube.com/embed/e-fA-gBCkj0",
-  "likes" : 8,
+  "likes" : 10,
   "favorite" : true
+}, {
+  "id" : 5,
+  "name" : "Justin Bieber - Beauty And A Beat (Official Music Video) ft. Nicki Minaj",
+  "url" : "https://www.youtube.com/watch?v=Ys7-6_t7OEQ",
+  "embedUrl" : "https://www.youtube.com/embed/Ys7-6_t7OEQ",
+  "likes" : 0,
+  "favorite" : false
 }, {
   "id" : 4,
   "name" : "Arctic Monkeys - Do I Wanna Know? (Live)",
   "url" : "https://www.youtube.com/watch?v=1tWFk8ojF4M",
   "embedUrl" : "https://www.youtube.com/embed/1tWFk8ojF4M",
-  "likes" : 0,
-  "favorite" : false
+  "likes" : 2,
+  "favorite" : true
 } ]

@@ -64,13 +64,13 @@ public class PlaylistService {
             // CODE SMELL: repetición de lógica
             if (host != null && host.contains("youtu.be")) {
 
-                //id = extractVideoIdFromPath(path);
+                id = extractVideoIdFromPath(path);
 
-                /* */
+                /* 
                 if (path != null && path.length() > 1) {
                     id = path.substring(1).split("[/?&]")[0];
                 }
-                /* */
+                */
 
             } else if (host != null && host.contains("youtube.com")) {
                 String query = u.getQuery();
@@ -87,9 +87,9 @@ public class PlaylistService {
                 // CODE SMELL: repetición de lógica
                 if (id == null && path != null) {
 
-                    //if (id == null) id = extractVideoIdFromPath(path);
+                    if (id == null) id = extractVideoIdFromPath(path);
 
-                    /* */
+                    /* 
                     if (path.contains("/embed/")) {
                         String[] segs = path.split("/embed/");
                         if (segs.length > 1) id = segs[1].split("[/?&]")[0];
@@ -97,7 +97,7 @@ public class PlaylistService {
                         String[] segs = path.split("/");
                         if (segs.length > 0) id = segs[segs.length - 1];
                     }
-                    /* */
+                    */
                 }
             }
 
@@ -125,12 +125,12 @@ public class PlaylistService {
 
 
     //REFACTORING
-    /* 
+    
     private static String extractVideoIdFromPath(String path) {
         if (path == null || path.isEmpty()) return null;
         String[] segs = path.split("[/?&]");
         return segs.length > 0 ? segs[segs.length - 1] : null;
         }
-    */
+    
 }
 
