@@ -51,15 +51,7 @@ public class PlaylistService {
         return repository.moveDown(id);
     }
 
-    /*
-       CODE SMELL:
-       El método toEmbedUrl quedó muy largo y tiene partes repetidas
-       para sacar el ID del video. Esto lo hace difícil de mantener.
-
-       REFACTORING:
-       Crear un método aparte para la extracción del ID
-       (está más abajo comentado).
-    */
+    // CODE SMELL: método largo con lógica repetida
     public static String toEmbedUrl(String original) {
         if (original == null) return null;
         String id = null;
@@ -69,13 +61,18 @@ public class PlaylistService {
             String host = u.getHost();
             String path = u.getPath();
 
-            // CODE SMELL: acá se repite lógica de extracción del ID
+            // CODE SMELL: repetición de lógica
             if (host != null && host.contains("youtu.be")) {
+
+                id = extractVideoIdFromPath(path);
+
+                /* 
                 if (path != null && path.length() > 1) {
                     id = path.substring(1).split("[/?&]")[0];
                 }
+                */
+
             } else if (host != null && host.contains("youtube.com")) {
-                // caso ?v=XYZ
                 String query = u.getQuery();
                 if (query != null) {
                     String[] parts = query.split("&");
@@ -89,6 +86,10 @@ public class PlaylistService {
 
                 // CODE SMELL: repetición de lógica
                 if (id == null && path != null) {
+
+                    if (id == null) id = extractVideoIdFromPath(path);
+
+                    /* 
                     if (path.contains("/embed/")) {
                         String[] segs = path.split("/embed/");
                         if (segs.length > 1) id = segs[1].split("[/?&]")[0];
@@ -96,10 +97,11 @@ public class PlaylistService {
                         String[] segs = path.split("/");
                         if (segs.length > 0) id = segs[segs.length - 1];
                     }
+                        */
                 }
             }
+
         } catch (Exception e) {
-            // fallback rápido
             String tmp = original;
             if (tmp.contains("v=")) {
                 int idx = tmp.indexOf("v=");
@@ -114,7 +116,6 @@ public class PlaylistService {
             return original;
         }
 
-        // Validación mínima para evitar IDs inválidos ("e", etc.)
         if (id.length() < 6 || !id.matches("^[A-Za-z0-9_-]+$")) {
             return original;
         }
@@ -122,19 +123,14 @@ public class PlaylistService {
         return "https://www.youtube.com/embed/" + id;
     }
 
-    /*
-       REFACTORING (para mostrar en la defensa)
 
-       Esto reemplazaría toda la lógica repetida arriba.
-          id = extractVideoIdFromPath(path);
-
-    */
-
-    /*
+    //REFACTORING
+    
     private static String extractVideoIdFromPath(String path) {
         if (path == null || path.isEmpty()) return null;
         String[] segs = path.split("[/?&]");
         return segs.length > 0 ? segs[segs.length - 1] : null;
-    }
-    */
+        }
+
 }
+

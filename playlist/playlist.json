@@ -6,13 +6,6 @@
   "likes" : 8,
   "favorite" : true
 }, {
-  "id" : 2,
-  "name" : "Harry Styles - As It Was (Official Video)",
-  "url" : "https://www.youtube.com/watch?v=H5v3kku4y6Q&list=RDe-fA-gBCkj0&index=22",
-  "embedUrl" : "https://www.youtube.com/embed/H5v3kku4y6Q",
-  "likes" : 4,
-  "favorite" : false
-}, {
   "id" : 4,
   "name" : "Arctic Monkeys - Do I Wanna Know? (Live)",
   "url" : "https://www.youtube.com/watch?v=1tWFk8ojF4M",
